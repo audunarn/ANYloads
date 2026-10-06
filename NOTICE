@@ -1,0 +1,11 @@
+ANYloads
+Copyright (c) Audun Nyhus
+
+This Source Code Form is subject to the terms of the Mozilla Public License,
+v. 2.0. If a copy of the MPL was not distributed with this file, You can
+obtain one at https://mozilla.org/MPL/2.0/.
+
+The expression, pressure-code and pressure-table modules were first written in
+ANYfem (also MPL-2.0) and moved here; their history is in that repository.
+
+Third-party software retains its own terms. See THIRD_PARTY_NOTICES.md.

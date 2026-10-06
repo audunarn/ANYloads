@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ANYloads"
+version = "0.1.0"
+description = "Load definitions and their evaluation: pressure from equations, trusted Python code and CSV/Excel tables, independent of any solver"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MPL-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+authors = [
+  { name = "Audun Arnesen Nyhus", email = "audunarn@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "platformdirs>=4.5,<5",
+]
+
+[project.optional-dependencies]
+# Excel (.xlsx) pressure tables; CSV/TSV/text need nothing extra.
+excel = ["openpyxl>=3.1"]
+dev = [
+  "build>=1.2",
+  "pytest>=8",
+  "openpyxl>=3.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/audunarn/ANYloads"
+Repository = "https://github.com/audunarn/ANYloads"
+Issues = "https://github.com/audunarn/ANYloads/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["anyloads*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["src"]
+addopts = ["-ra", "-p", "no:cacheprovider"]
