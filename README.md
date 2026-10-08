@@ -31,6 +31,30 @@ PressureField(table=table).evaluate(case, points)
 A field returns a pressure *magnitude*; `fluid_sign(...)` turns it into a
 pressure signed along a surface normal for a given fluid side.
 
+## Envelopes: when a load acts
+
+A load in a long time history is one load that says *when* it acts, not a copy in
+every load case. An `Envelope` multiplies it by a factor that is zero outside a
+window and, inside, comes from an equation or a table of points:
+
+```python
+from anyloads import Envelope
+
+# acts from load case 20 to 300 (both inclusive), ramped in over 4 s of its own clock
+Envelope(start=20, stop=300, expression="min(1, tau / 4)")
+# acts between 10 s and 50 s of case time
+Envelope(by="time", start=10, stop=50, expression="0.3 + 0.4 * sin(omega * t)")
+# a ramp in, a plateau and a ramp out (linear, held at the ends)
+Envelope(points=((0, 0), (10, 1), (50, 1), (60, 0)))
+
+Envelope(start=20, stop=300).factor(case)   # 1.0 inside the window, 0.0 outside
+```
+
+An expression reads `t` (case time), `number` (load case number), `k` (steps since the
+window opened), `tau` (seconds since it opened; needs a window by time, or the caller's
+`start_time`), the case parameters and the usual constants and functions. Several loads
+each carry their own envelope and simply add.
+
 ## Equations
 
 A formula of `x, y, z` (metres), the case time `t`, the case's named parameters

@@ -13,6 +13,7 @@ Code never runs just because a file says so: see :mod:`anyloads.usercode`.
 from __future__ import annotations
 
 from .case import CaseContext, check_parameter
+from .envelope import ENVELOPE_BASES, ENVELOPE_NAMES, Envelope
 from .errors import LoadError
 from .expressions import (
     BUILTIN_CONSTANTS,
@@ -53,6 +54,9 @@ __all__ = [
     "BUILTIN_CONSTANTS",
     "COORDINATE_NAMES",
     "CaseContext",
+    "ENVELOPE_BASES",
+    "ENVELOPE_NAMES",
+    "Envelope",
     "ExpressionError",
     "FLUID_SIDES",
     "FUNCTION_NAME",
