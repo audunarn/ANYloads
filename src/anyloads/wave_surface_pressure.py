@@ -10,7 +10,7 @@ pd the incident+diffraction pressure; all spectral components are summed BEFORE 
 The source is stored ONCE as neutral per-frequency complex unit-amplitude fields at the target corner points
 (never a dense time-by-mesh tensor) with the saved wave realization; each frame is evaluated at an absolute time.
 This module is neutral: no hydrodynamics or FEM imports.  Clipping is delegated lazily to the ANYgeometry public
-contract; consistent partial-region load integration belongs to ANYsolver and is applied by the application.
+contract; consistent partial-region load integration belongs to ANYfeSolver and is applied by the application.
 """
 from dataclasses import dataclass, field
 import hashlib
