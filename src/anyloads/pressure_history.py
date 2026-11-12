@@ -9,6 +9,9 @@ import numpy as np
 def pressure_history_from_dict(data):
     """Strict additive dispatcher retaining harmonic v1 records unchanged."""
     if not isinstance(data,dict): raise ValueError('typed pressure history record required')
+    if data.get('type')=='prescribed_pressure_history_v1':
+        from .prescribed_pressure import PrescribedPressureHistory
+        return PrescribedPressureHistory.from_dict(data)
     if data.get('type')=='harmonic_mapped_pressure_v1':
         return MappedPressureHistory.from_dict(data)
     if data.get('type')=='spectral_mapped_pressure_v1':

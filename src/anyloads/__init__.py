@@ -127,3 +127,7 @@ from .source_pressure_history import SourceAwarePressureHistory
 __all__ += ['SourceAwarePressureHistory']
 from .wave_surface_pressure import WaveSurfaceFrame, WaveSurfacePressureHistory
 __all__ += ['WaveSurfaceFrame', 'WaveSurfacePressureHistory']
+
+from .prescribed_pressure import PrescribedPressureHistory
+from .orcawave_spectrum import native_frequency_realization, regular_realization
+__all__ += ['PrescribedPressureHistory', 'native_frequency_realization', 'regular_realization']
